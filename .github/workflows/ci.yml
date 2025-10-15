@@ -17,15 +17,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node.js 15
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 15.14.0
+
+      - name: Upgrade npm to 7.x
+        run: npm install -g npm@7.24.2
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --engine-strict=false
         working-directory: codebase/rdicidr-0.1.0
 
-      - name: Build project
+      - name: Run build
         run: npm run build
         working-directory: codebase/rdicidr-0.1.0

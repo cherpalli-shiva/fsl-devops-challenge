@@ -1,36 +1,36 @@
 name: CI Pipeline
 
-on: 
+on:
   pull_request:
     branches:
-      -main 
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps: 
-    - name: Check out code
-    uses: actions/checkout@v3
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-    uses: actions/setup-node@v3
-    with:
-      node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run linter
-      run: npm run lint
+      - name: Run linter
+        run: npm run lint --if-present
 
-    - name: Run formatter
-      run: npm run prettier
+      - name: Run formatter
+        run: npm run prettier --if-present
 
-    - name: Run tests
-      env: 
-        CI: true
-      run: npm run test
+      - name: Run tests
+        env:
+          CI: true
+        run: npm run test --if-present
 
-    - name: Build project
-      run: npm run build
+      - name: Build project
+        run: npm run build

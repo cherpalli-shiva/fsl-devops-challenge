@@ -37,7 +37,7 @@ jobs:
       - name: Run tests
         run: npm test || echo "Skipping tests"
         working-directory: codebase/rdicidr-0.1.0
-
+        
       - name: Build project
         run: npm run build
         working-directory: codebase/rdicidr-0.1.0

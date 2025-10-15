@@ -23,7 +23,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --engine-strict=false
         working-directory: codebase/rdicidr-0.1.0
 
       - name: Build project
